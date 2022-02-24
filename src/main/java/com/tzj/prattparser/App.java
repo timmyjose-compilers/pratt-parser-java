@@ -12,7 +12,8 @@ public class App {
       String input = in.readLine().trim();
       final Parser parser = new Parser(new Scanner(input));
       final Expr ast = parser.parse();
-      System.out.println(ast);
+      final Evaluator evaluator = new Evaluator();
+      System.out.println(evaluator.evaluate(ast));
     } catch(IOException ex) {
       throw new RuntimeException(ex);
     }
