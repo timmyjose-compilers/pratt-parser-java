@@ -10,14 +10,9 @@ public class App {
 
     try (final BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
       String input = in.readLine().trim();
-      final Scanner scanner = new Scanner(input);
-      while (true) {
-        Token tok = scanner.scan();
-        System.out.println(tok);
-        if (tok.kind() == TokenType.EOF) {
-          break;
-        }
-      }
+      final Parser parser = new Parser(new Scanner(input));
+      final Expr ast = parser.parse();
+      System.out.println(ast);
     } catch(IOException ex) {
       throw new RuntimeException(ex);
     }
